@@ -32,9 +32,10 @@ python manage.py collectstatic --noinput
 
 # Configure Supervisor
 cp $PROJECT_BASE_PATH/deploy/supervisor_profiles_api.conf /etc/supervisor/conf.d/profiles_api.conf
-supervisorctl reread
-supervisorctl update
-supervisorctl start profiles_api  # Ensure the server starts
+sudo supervisorctl reread
+sudo supervisorctl update
+sudo systemctl restart supervisor
+sudo supervisorctl restart profiles_api  # Ensure the server starts
 
 # Configure Nginx
 cp $PROJECT_BASE_PATH/deploy/nginx_profiles_api.conf /etc/nginx/sites-available/profiles_api.conf
