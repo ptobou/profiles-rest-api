@@ -22,6 +22,7 @@ source $PROJECT_BASE_PATH/venv/bin/activate
 # Install python packages
 pip install -r $PROJECT_BASE_PATH/requirements.txt
 pip install gunicorn==21.2.0
+pip install --no-binary :all: backports.zoneinfo
 
 # Run migrations and collect static files
 cd $PROJECT_BASE_PATH
