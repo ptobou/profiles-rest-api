@@ -20,9 +20,10 @@ python3 -m venv $PROJECT_BASE_PATH/venv
 source $PROJECT_BASE_PATH/venv/bin/activate
 
 # Install python packages
-pip install -r $PROJECT_BASE_PATH/requirements.txt
-pip install gunicorn==21.2.0
-pip install --no-binary :all: backports.zoneinfo
+$PROJECT_BASE_PATH/venv/bin/pip install -r $PROJECT_BASE_PATH/requirements.txt
+$PROJECT_BASE_PATH/venv/bin/pip install gunicorn==21.2.0
+$PROJECT_BASE_PATH/venv/bin/pip install --no-binary :all: backports.zoneinfo
+$PROJECT_BASE_PATH/venv/bin/pip install uwsgi
 
 # Run migrations and collect static files
 cd $PROJECT_BASE_PATH
@@ -40,5 +41,10 @@ cp $PROJECT_BASE_PATH/deploy/nginx_profiles_api.conf /etc/nginx/sites-available/
 rm -f /etc/nginx/sites-enabled/default
 ln -s /etc/nginx/sites-available/profiles_api.conf /etc/nginx/sites-enabled/profiles_api.conf
 systemctl restart nginx
+# Verify Supervisor status
+supervisorctl status profiles_api
+
+# Verify Nginx status
+systemctl status nginx.service
 
 echo "Deployment complete! Server is running."
