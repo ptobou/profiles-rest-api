@@ -15,7 +15,6 @@ sudo apt-get install -y python3-dev python3-venv sqlite3 libsqlite3-dev python3-
 sudo apt update && sudo apt install -y python3.12-dev build-essential libpcre3 libpcre3-dev
 sudo apt update
 sudo apt install -y python3-dev python3-pip python3-venv build-essential libpcre3 libpcre3-dev
-sudo pip install --no-binary :all: uwsgi
 
 # Create project directory
 mkdir -p $PROJECT_BASE_PATH
