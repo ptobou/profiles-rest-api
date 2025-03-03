@@ -10,8 +10,9 @@ PROJECT_GIT_URL='https://github.com/ptobou/profiles-rest-api.git'
 PROJECT_BASE_PATH='/usr/local/apps/profiles-rest-api'
 
 echo "Installing dependencies..."
-apt-get update
-apt-get install -y python3-dev python3-venv sqlite3 libsqlite3-dev python3-pip supervisor nginx git
+sudo apt-get update
+sudo apt-get install -y python3-dev python3-venv sqlite3 libsqlite3-dev python3-pip supervisor nginx git
+sudo apt update && sudo apt install -y python3.12-dev build-essential libpcre3 libpcre3-dev
 
 # Create project directory
 mkdir -p $PROJECT_BASE_PATH
